@@ -1,4 +1,4 @@
 import React from 'react';
-import Timer from './timer/timer.react';
+import StackRpgFrame from './stack-rpg-frame.react';
 
-React.render(<Timer />, document.body);
+React.render(<StackRpgFrame />, document.body);
