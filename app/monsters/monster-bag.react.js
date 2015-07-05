@@ -1,5 +1,6 @@
 import React from 'react';
 import MonsterBagStore from './monster-bag-store';
+import MonsterBagItem from './monster-bag-item.react';
 
 export default class MonsterBag extends React.Component {
   constructor(props) {
@@ -21,19 +22,16 @@ export default class MonsterBag extends React.Component {
   }
 
   render() {
-    var monsters = this.state.bag.map((monster) => {
-      return (
-          <div className="bagItem">
-              <div className="noselect">{monster.Name}</div>
-          </div>);
-    });
-
     return (
       <div>
         <hr />
         <div>
             <label>Monster Bag:</label>
-            <div className="clearfix">{monsters}</div>
+            <div className="clearfix"> {
+              this.state.bag.map((monster) => {
+                return <MonsterBagItem monsterName={monster.Name}/>;
+              })}
+            </div>
         </div>
       </div>
     );
