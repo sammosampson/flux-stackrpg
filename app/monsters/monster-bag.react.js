@@ -1,6 +1,7 @@
 import React from 'react';
 import MonsterBagStore from './monster-bag-store';
 import MonsterBagList from './monster-bag-list.react';
+import Container from '../container.react'
 
 export default class MonsterBag extends React.Component {
   constructor(props) {
@@ -23,13 +24,9 @@ export default class MonsterBag extends React.Component {
 
   render() {
     return (
-      <div>
-        <hr />
-        <div>
-            <label>Monster Bag:</label>
-            <MonsterBagList monsters={this.state.monsters}/>
-        </div>
-      </div>
+      <Container title="Monster Bag:">
+        <MonsterBagList monsters={this.state.monsters}/>
+      </Container>
     );
   }
 }
