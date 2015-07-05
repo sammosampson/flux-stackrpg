@@ -1,0 +1,4 @@
+export default {
+	TIMER_START: 'TIMER_START',
+	TIMER_STOP: 'TIMER_START'
+}
