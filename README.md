@@ -1,5 +1,7 @@
 # flux-stackrpg
-Gimble StackRpg done with react
+This is spike project to try and build a simple rpg game and learn React.
+
+@4imble is also doing this using [Aurelia][Aurelia]
 
 - Install [Node][Node].
 - Install [Git][Git]
@@ -13,4 +15,5 @@ Gimble StackRpg done with react
 
 [Node]: https://nodejs.org/
 [Git]: https://git-scm.com/downloads
+[Aurelia]: https://github.com/4imble/AureliaStackRpg
 
