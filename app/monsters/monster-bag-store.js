@@ -6,12 +6,12 @@ import Monster from './monster';
 import EventEmitter from 'events';
 
 let state = {
-	bag : []
+	monsters : []
 };
 
 class MonsterBagStore extends EventEmitter.EventEmitter {
 	_add(monsterName) {
-		state.bag.push(new Monster(monsterName));
+		state.monsters.push(new Monster(monsterName));
 		this.emitChange();
 	}
 

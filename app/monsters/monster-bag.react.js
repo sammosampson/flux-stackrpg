@@ -1,6 +1,6 @@
 import React from 'react';
 import MonsterBagStore from './monster-bag-store';
-import MonsterBagItem from './monster-bag-item.react';
+import MonsterBagList from './monster-bag-list.react';
 
 export default class MonsterBag extends React.Component {
   constructor(props) {
@@ -27,11 +27,7 @@ export default class MonsterBag extends React.Component {
         <hr />
         <div>
             <label>Monster Bag:</label>
-            <div className="clearfix"> {
-              this.state.bag.map((monster) => {
-                return <MonsterBagItem monsterName={monster.Name}/>;
-              })}
-            </div>
+            <MonsterBagList monsters={this.state.monsters}/>
         </div>
       </div>
     );
