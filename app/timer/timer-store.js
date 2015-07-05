@@ -45,7 +45,7 @@ AppDispatcher.register((payload) => {
 	let action = payload.action;
 	switch(action.type) {
 		case TimerConstants.TIMER_START:
-			_TimerStore._tick(TimerStore);
+			_TimerStore._tick();
 			break;
 		default:
 			break;

@@ -11,7 +11,6 @@ export default class Timer extends React.Component {
 
 	componentWillMount() {
 		TimerStore.addChangeListener(this.changeCallback);
-		TimerActions.start();
 	}
 
 	componentWillUnmount() {
