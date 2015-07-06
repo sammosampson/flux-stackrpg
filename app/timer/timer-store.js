@@ -11,10 +11,7 @@ let state = {
 class TimerStore extends EventEmitter.EventEmitter {
 	_tick() {
 	    window.setTimeout(() => {
-	        state.currentTime--;
-	        if(state.currentTime === -1) {
-	           state.currentTime = 5;
-	        }
+	        state.currentTime++;
 	        this.emitChange();
 	        this._tick();
 	    }, 1000);
