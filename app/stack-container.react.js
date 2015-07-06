@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class Container extends React.Component {
+export default class StackContainer extends React.Component {
   render() {
     return (
       <div>
