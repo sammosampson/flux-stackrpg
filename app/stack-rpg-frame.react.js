@@ -4,6 +4,7 @@ import TimerActions from './timer/timer-actions';
 import GoldCounter from './loot/gold-counter.react';
 import MonsterBag from './monsters/monster-bag.react';
 import MonsterBagActions from './monsters/monster-bag-actions';
+import BattleStack from './battles/battle-stack.react';
 
 export default class StackRpgFrame extends React.Component {
   componentWillMount() {
@@ -18,6 +19,7 @@ export default class StackRpgFrame extends React.Component {
         <Timer />
         <GoldCounter />
         <MonsterBag />
+        <BattleStack />
       </div>
     );
   }
