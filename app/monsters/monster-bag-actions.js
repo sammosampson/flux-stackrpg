@@ -7,5 +7,12 @@ export default {
             type: MonsterBagConstants.ADD_MONSTER,
             monsterName: name
         });
+    },
+
+    monsterSelected: (name) => {
+        AppDispatcher.handleViewAction({
+            type: MonsterBagConstants.MONSTER_SELECTED,
+            monsterName: name
+        });
     }
 }

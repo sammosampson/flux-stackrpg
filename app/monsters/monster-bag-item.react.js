@@ -1,9 +1,11 @@
 import React from 'react';
+import MonsterBagActions from './monster-bag-actions';
 
 export default class MonsterBagItem extends React.Component {
   _selectMonster() {
-    console.log(this.props.monsterName);
+    MonsterBagActions.monsterSelected(this.props.monsterName);
   }
+
   render() {
     return(
       <div key={this.props.key}>
