@@ -1,14 +1,12 @@
-'use strict';
-
-import AppDispatcher from '../dispatcher';
-import MonsterBagConstants from '../monsters/monster-bag-constants';
-import Monster from './monster';
-import TimerStore from '../timer/timer-store';
-import EventEmitter from 'events';
+import EventEmitter from 'events'
+import AppDispatcher from '../dispatcher'
+import MonsterBagConstants from '../monsters/monster-bag-constants'
+import TimerStore from '../timer/timer-store'
+import Monster from './monster'
 
 let state = {
 	stack : [],
-	deadMonsters : []
+	monsterKilledOnLastTick : false
 };
 
 class BattleStackStore extends EventEmitter.EventEmitter {
@@ -18,7 +16,8 @@ class BattleStackStore extends EventEmitter.EventEmitter {
 	}
 
 	_killMonster() {
-    state.deadMonsters.push(state.stack.shift);
+    state.stack.pop();
+		state.monsterKilledOnLastTick = (state.stack.length > 0);
 		this.emitChange();
   }
 
