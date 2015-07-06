@@ -16,8 +16,8 @@ class BattleStackStore extends EventEmitter.EventEmitter {
 	}
 
 	_killMonster() {
-    state.stack.pop();
-		state.monsterKilledOnLastTick = (state.stack.length > 0);
+    state.monsterKilledOnLastTick = (state.stack.length > 0);
+		state.stack.pop();
 		this.emitChange();
   }
 

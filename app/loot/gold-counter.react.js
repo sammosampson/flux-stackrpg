@@ -5,7 +5,7 @@ export default class GoldCounter extends React.Component {
     return (
       <div>
         <label>Gold:</label>
-        <div>10</div>
+        <div>0</div>
       </div>
     );
   }

@@ -5,6 +5,7 @@ import GoldCounter from './loot/gold-counter.react';
 import MonsterBag from './monsters/monster-bag.react';
 import MonsterBagActions from './monsters/monster-bag-actions';
 import BattleStack from './battles/battle-stack.react';
+import LootStack from './loot/loot-stack.react';
 
 export default class StackRpgFrame extends React.Component {
   componentWillMount() {
@@ -20,6 +21,7 @@ export default class StackRpgFrame extends React.Component {
         <GoldCounter />
         <MonsterBag />
         <BattleStack />
+        <LootStack />
       </div>
     );
   }
