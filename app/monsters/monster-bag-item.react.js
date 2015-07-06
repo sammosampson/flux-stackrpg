@@ -8,8 +8,8 @@ export default class MonsterBagItem extends React.Component {
 
   render() {
     return(
-      <div key={this.props.key}>
-        <div onClick={this._selectMonster.bind(this)}>{this.props.monsterName}</div>
+      <div className="bagItem" key={this.props.key}>
+        <div className="noselect" onClick={this._selectMonster.bind(this)}>{this.props.monsterName}</div>
       </div>
       );
   }

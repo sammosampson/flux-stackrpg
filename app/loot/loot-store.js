@@ -2,7 +2,8 @@
 
 import AppDispatcher from '../dispatcher';
 import BattleStackStore from '../battles/battle-stack-store'
-import GoldItem from './gold-item'
+import LootItem from './loot-item'
+import LootConstants from './loot-constants'
 import Dice from './dice'
 import EventEmitter from 'events';
 
@@ -18,7 +19,7 @@ class LootStore extends EventEmitter.EventEmitter {
 
 	_addLootIfMosterKilled() {
 		if(BattleStackStore.getState().monsterKilledOnLastTick) {
-			state.stack.push(new GoldItem(Dice.rollD20()));
+			state.stack.push(new LootItem(Dice.rollD20()));
 			this.emitChange();
 		}
 	}
@@ -47,6 +48,9 @@ export default _LootStore;
 AppDispatcher.register((payload) => {
 	let action = payload.action;
 	switch(action.type) {
+		case LootConstants.LOOT_SELECTED:
+			
+			break;
 		default:
 			break;
 	}
