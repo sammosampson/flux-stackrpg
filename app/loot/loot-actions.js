@@ -2,10 +2,10 @@ import AppDispatcher from '../dispatcher';
 import LootConstants from './loot-constants';
 
 export default {
-    lootSelected: (value) => {
+    lootSelected: (loot) => {
         AppDispatcher.handleViewAction({
             type: LootConstants.LOOT_SELECTED,
-            value: value
+            loot: loot
         });
     }
 }

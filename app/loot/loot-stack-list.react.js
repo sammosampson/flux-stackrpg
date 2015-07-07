@@ -6,7 +6,7 @@ export default class LootStackList extends React.Component {
     return (
       <div className="clearfix"> {
         this.props.stack.map((loot, index) => {
-          return <LootStackItem value={loot.Value} key={index}/>;
+          return <LootStackItem loot={loot} key={index}/>;
         })}
       </div>);
   }

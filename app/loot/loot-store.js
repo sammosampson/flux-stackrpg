@@ -17,6 +17,11 @@ class LootStore extends EventEmitter.EventEmitter {
 		BattleStackStore.addChangeListener(this._addLootIfMosterKilled.bind(this));
 	}
 
+	_removeLoot(loot) {
+		state.stack.splice(state.stack.indexOf(loot), 1);
+		this.emitChange();
+	}
+
 	_addLootIfMosterKilled() {
 		if(BattleStackStore.getState().monsterKilledOnLastTick) {
 			state.stack.push(new LootItem(Dice.rollD20()));
@@ -49,7 +54,7 @@ AppDispatcher.register((payload) => {
 	let action = payload.action;
 	switch(action.type) {
 		case LootConstants.LOOT_SELECTED:
-			
+			_LootStore._removeLoot(action.loot)
 			break;
 		default:
 			break;

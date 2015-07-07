@@ -39,7 +39,7 @@ AppDispatcher.register((payload) => {
 	let action = payload.action;
 	switch(action.type) {
 		case LootConstants.LOOT_SELECTED:
-			_GoldStore._addGold(action.value);
+			_GoldStore._addGold(action.loot.Value);
 			break;
 		default:
 			break;
