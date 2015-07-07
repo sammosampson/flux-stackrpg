@@ -2,32 +2,20 @@
 
 import AppDispatcher from '../../dispatcher';
 import LootConstants from '../loot-constants'
-import EventEmitter from 'events';
+import FluxStore from '../../flux-store';
 
 let state = {
 	goldCount: 0
 };
 
-class GoldStore extends EventEmitter.EventEmitter {
+class GoldStore extends FluxStore {
 	_addGold(value) {
 		state.goldCount += value;
-		this.emitChange();
+		super.emitChange();
 	}
 
 	getState() {
 		return state;
-	}
-
-	emitChange() {
-		this.emit('CHANGE');
-	}
-
-	addChangeListener(cb) {
-		this.on('CHANGE', cb)
-	}
-
-	removeChangeListener(cb) {
-		this.removeListener('CHANGE', cb);
 	}
 }
 
@@ -35,13 +23,6 @@ let _GoldStore = new GoldStore();
 
 export default _GoldStore;
 
-AppDispatcher.register((payload) => {
-	let action = payload.action;
-	switch(action.type) {
-		case LootConstants.LOOT_SELECTED:
-			_GoldStore._addGold(action.loot.Value);
-			break;
-		default:
-			break;
-	}
-});
+AppDispatcher
+	.when(LootConstants.LOOT_SELECTED)
+		.then((action) => _GoldStore._addGold(action.loot.Value));

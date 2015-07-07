@@ -1,4 +1,4 @@
-import EventEmitter from 'events'
+import FluxStore from '../flux-store'
 import AppDispatcher from '../dispatcher'
 import MonsterBagConstants from '../monsters/monster-bag-constants'
 import TimerStore from '../timer/timer-store'
@@ -9,7 +9,7 @@ let state = {
 	monsterKilledOnLastTick : false
 };
 
-class BattleStackStore extends EventEmitter.EventEmitter {
+class BattleStackStore extends FluxStore {
 	constructor()	{
 		super();
 		TimerStore.addChangeListener(this._killMonster.bind(this));
@@ -18,42 +18,22 @@ class BattleStackStore extends EventEmitter.EventEmitter {
 	_killMonster() {
     state.monsterKilledOnLastTick = (state.stack.length > 0);
 		state.stack.pop();
-		this.emitChange();
+		super.emitChange();
   }
 
 	_add(monsterName) {
 		state.stack.push(new Monster(monsterName));
-		this.emitChange();
+		super.emitChange();
 	}
 
 	getState() {
 		return state;
 	}
-
-	emitChange() {
-		this.emit('CHANGE');
-	}
-
-	addChangeListener(cb) {
-		this.on('CHANGE', cb)
-	}
-
-	removeChangeListener(cb) {
-		this.removeListener('CHANGE', cb);
-	}
 }
 
 let _BattleStackStore = new BattleStackStore();
-
 export default _BattleStackStore;
 
-AppDispatcher.register((payload) => {
-	let action = payload.action;
-	switch(action.type) {
-		case MonsterBagConstants.MONSTER_SELECTED:
-			_BattleStackStore._add(action.monsterName);
-			break;
-		default:
-			break;
-	}
-});
+AppDispatcher
+	.when(MonsterBagConstants.MONSTER_SELECTED)
+		.then((action) => _BattleStackStore._add(action.monsterName));
