@@ -6,7 +6,7 @@ import StackContainer from '../stack-container.react'
 export default class LootStack extends React.Component {
   constructor(props) {
     super(props);
-    this.state = LootStore.getState();
+    this.state = { stack: LootStore.stack };
     this.changeCallback = this._onChange.bind(this);
   }
 
@@ -19,7 +19,7 @@ export default class LootStack extends React.Component {
   }
 
   _onChange() {
-    this.setState(LootStore.getState())
+    this.setState({ stack: LootStore.stack })
   }
 
   render() {

@@ -8,23 +8,21 @@ import LootConstants from './loot-constants'
 import Dice from './dice'
 import FluxStore from '../flux-store';
 
-let state = {
-	stack: []
-};
+let stack = [];
 
 class LootStore extends FluxStore {
 	_removeLoot(loot) {
-		state.stack.splice(state.stack.indexOf(loot), 1);
+		stack.splice(stack.indexOf(loot), 1);
 	}
 
 	_addLootIfMonsterKilled(monsterKilledOnLastTick) {
 		if(monsterKilledOnLastTick) {
-			state.stack.push(new LootItem(Dice.rollD20()));
+			stack.push(new LootItem(Dice.rollD20()));
 		}
 	}
 
-	getState() {
-		return state;
+	get stack() {
+		return stack;
 	}
 }
 
@@ -38,7 +36,7 @@ _LootStore.storeId = AppDispatcher.register((payload) => {
 		}
 		if(payload.action.type === TimerConstants.TIMER_TICK) {
 			AppDispatcher.waitFor([BattleStackStore.storeId]);
-			_LootStore._addLootIfMonsterKilled(BattleStackStore.getState().monsterKilledOnLastTick);
+			_LootStore._addLootIfMonsterKilled(BattleStackStore.monsterKilledOnLastTick);
 			_LootStore.emitChange();
 		}
 });

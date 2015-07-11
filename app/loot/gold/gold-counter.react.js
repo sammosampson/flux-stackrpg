@@ -4,7 +4,7 @@ import GoldStore from './gold-store';
 export default class GoldCounter extends React.Component {
   constructor(props) {
     super(props);
-    this.state = GoldStore.getState();
+    this.state = { goldCount: GoldStore.goldCount };
     this.changeCallback = this._onChange.bind(this);
   }
 
@@ -17,7 +17,7 @@ export default class GoldCounter extends React.Component {
   }
 
   _onChange() {
-    this.setState(GoldStore.getState())
+    this.setState({ goldCount: GoldStore.goldCount })
   }
 
   render() {

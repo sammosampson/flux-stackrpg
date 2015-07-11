@@ -5,7 +5,7 @@ import TimerStore from './timer-store';
 export default class Timer extends React.Component {
   constructor(props) {
 		super(props);
-		this.state = TimerStore.getState();
+		this.state = { currentTime : TimerStore.currentTime };
 		this.changeCallback = this._onChange.bind(this);
 	}
 
@@ -18,14 +18,16 @@ export default class Timer extends React.Component {
 	}
 
 	_onChange() {
-    this.setState(TimerStore.getState())
+    this.setState({
+      currentTime: TimerStore.currentTime
+    });
 	}
 
   render() {
     return (
       <div>
         <label>Timer:</label>
-        <div>{this.state.currentTime}</div>
+        <div>{this.state}</div>
       </div>
     );
   }

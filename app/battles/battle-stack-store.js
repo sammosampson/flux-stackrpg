@@ -4,23 +4,25 @@ import MonsterBagConstants from '../monsters/monster-bag-constants'
 import TimerConstants from '../timer/timer-constants'
 import Monster from './monster'
 
-let state = {
-	stack : [],
-	monsterKilledOnLastTick : false
-};
+let stack = [];
+let monsterKilledOnLastTick = false;
 
 class BattleStackStore extends FluxStore {
 	_killMonster() {
-    state.monsterKilledOnLastTick = (state.stack.length > 0);
-		state.stack.pop();
+    monsterKilledOnLastTick = (stack.length > 0);
+		stack.pop();
   }
 
 	_add(monsterName) {
-		state.stack.push(new Monster(monsterName));
+		stack.push(new Monster(monsterName));
 	}
 
-	getState() {
-		return state;
+	get stack() {
+		return stack;
+	}
+
+	get monsterKilledOnLastTick() {
+		return monsterKilledOnLastTick;
 	}
 }
 

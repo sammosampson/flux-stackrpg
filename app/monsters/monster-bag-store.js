@@ -5,17 +5,15 @@ import MonsterBagConstants from './monster-bag-constants';
 import Monster from './monster';
 import FluxStore from '../flux-store';
 
-let state = {
-	monsters : []
-};
+let monsters = [];
 
 class MonsterBagStore extends FluxStore {
 	_add(monsterName) {
-		state.monsters.push(new Monster(monsterName));
+		monsters.push(new Monster(monsterName));
 	}
 
-	getState() {
-		return state;
+	get monsters() {
+		return monsters;
 	}
 }
 

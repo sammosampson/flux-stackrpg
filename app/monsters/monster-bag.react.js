@@ -6,7 +6,7 @@ import StackContainer from '../stack-container.react'
 export default class MonsterBag extends React.Component {
   constructor(props) {
     super(props);
-    this.state = MonsterBagStore.getState();
+    this.state = { monsters : MonsterBagStore.monsters };
     this.changeCallback = this._onChange.bind(this);
   }
 
@@ -19,7 +19,7 @@ export default class MonsterBag extends React.Component {
   }
 
   _onChange() {
-    this.setState(MonsterBagStore.getState())
+    this.setState({ monsters: MonsterBagStore.monsters });
   }
 
   render() {

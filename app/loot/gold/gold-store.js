@@ -4,17 +4,15 @@ import AppDispatcher from '../../dispatcher';
 import LootConstants from '../loot-constants'
 import FluxStore from '../../flux-store';
 
-let state = {
-	goldCount: 0
-};
+let goldCount = 0;
 
 class GoldStore extends FluxStore {
 	_addGold(value) {
-		state.goldCount += value;
+		goldCount += value;
 	}
 
-	getState() {
-		return state;
+	get goldCount() {
+		return goldCount;
 	}
 }
 

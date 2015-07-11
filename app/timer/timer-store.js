@@ -4,17 +4,15 @@ import AppDispatcher from '../dispatcher';
 import TimerConstants from './timer-constants';
 import FluxStore from '../flux-store';
 
-let state = {
-	currentTime : 0
-};
+let currentTime = 0;
 
 class TimerStore extends FluxStore {
 	_tick(currentTick) {
-	    state.currentTime = currentTick;
+	    currentTime = currentTick;
 	}
 
-	getState() {
-		return state;
+	get currentTime() {
+		return currentTime;
 	}
 }
 
