@@ -9,12 +9,8 @@ let state = {
 };
 
 class TimerStore extends FluxStore {
-	_tick() {
-	    window.setTimeout(() => {
-	        state.currentTime++;
-	        super.emitChange();
-	        this._tick();
-	    }, 1000);
+	_tick(currentTick) {
+	    state.currentTime = currentTick;
 	}
 
 	getState() {
@@ -26,5 +22,5 @@ let _TimerStore = new TimerStore();
 export default _TimerStore;
 
 AppDispatcher
-	.when(TimerConstants.TIMER_START)
-		.then((action) =>	_TimerStore._tick());
+	.when(TimerConstants.TIMER_TICK)
+		.then((action) =>	_TimerStore._tick(action.tick));
