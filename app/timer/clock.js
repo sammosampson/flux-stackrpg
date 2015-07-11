@@ -3,12 +3,14 @@ import TimerActions from './timer-actions'
 
 let currentTime = 0;
 
-export default {
-    start: () => {
+class Clock {
+    start() {
       window.setTimeout(() => {
           currentTime++;
           TimerActions.tick(currentTime);
-          start();
+          this.start();
       }, 1000);
     }
 }
+
+export default new Clock();

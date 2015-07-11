@@ -21,6 +21,9 @@ class TimerStore extends FluxStore {
 let _TimerStore = new TimerStore();
 export default _TimerStore;
 
-AppDispatcher
-	.when(TimerConstants.TIMER_TICK)
-		.then((action) =>	_TimerStore._tick(action.tick));
+_TimerStore.storeId = AppDispatcher.register((payload) => {
+		if(payload.action.type === TimerConstants.TIMER_TICK) {
+			_TimerStore._tick(payload.action.tick);
+			_TimerStore.emitChange();
+		}
+});

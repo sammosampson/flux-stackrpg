@@ -1,7 +1,7 @@
 import FluxStore from '../flux-store'
 import AppDispatcher from '../dispatcher'
 import MonsterBagConstants from '../monsters/monster-bag-constants'
-import TimerStore from '../timer/timer-store'
+import TimerConstants from '../timer/timer-constants'
 import Monster from './monster'
 
 let state = {
@@ -10,20 +10,13 @@ let state = {
 };
 
 class BattleStackStore extends FluxStore {
-	constructor()	{
-		super();
-		TimerStore.addChangeListener(this._killMonster.bind(this));
-	}
-
 	_killMonster() {
     state.monsterKilledOnLastTick = (state.stack.length > 0);
 		state.stack.pop();
-		super.emitChange();
   }
 
 	_add(monsterName) {
 		state.stack.push(new Monster(monsterName));
-		super.emitChange();
 	}
 
 	getState() {
@@ -34,6 +27,13 @@ class BattleStackStore extends FluxStore {
 let _BattleStackStore = new BattleStackStore();
 export default _BattleStackStore;
 
-AppDispatcher
-	.when(MonsterBagConstants.MONSTER_SELECTED)
-		.then((action) => _BattleStackStore._add(action.monsterName));
+_BattleStackStore.storeId = AppDispatcher.register((payload) => {
+		if(payload.action.type === MonsterBagConstants.MONSTER_SELECTED) {
+			_BattleStackStore._add(payload.action.monsterName);
+			_BattleStackStore.emitChange();
+		}
+		if(payload.action.type === TimerConstants.TIMER_TICK) {
+			_BattleStackStore._killMonster();
+			_BattleStackStore.emitChange();
+		}
+});

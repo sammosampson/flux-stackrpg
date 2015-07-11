@@ -11,7 +11,6 @@ let state = {
 class GoldStore extends FluxStore {
 	_addGold(value) {
 		state.goldCount += value;
-		super.emitChange();
 	}
 
 	getState() {
@@ -23,6 +22,9 @@ let _GoldStore = new GoldStore();
 
 export default _GoldStore;
 
-AppDispatcher
-	.when(LootConstants.LOOT_SELECTED)
-		.then((action) => _GoldStore._addGold(action.loot.Value));
+_GoldStore.storeId = AppDispatcher.register((payload) => {
+		if(payload.action.type === LootConstants.LOOT_SELECTED) {
+			_GoldStore._addGold(payload.action.loot.Value);
+			_GoldStore.emitChange();
+		}
+});

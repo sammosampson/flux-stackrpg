@@ -1,6 +1,6 @@
 import React from 'react';
 import Timer from './timer/timer.react';
-import TimerActions from './timer/timer-actions';
+import Clock from './timer/clock';
 import GoldCounter from './loot/gold/gold-counter.react';
 import MonsterBag from './monsters/monster-bag.react';
 import MonsterBagActions from './monsters/monster-bag-actions';
@@ -9,7 +9,7 @@ import LootStack from './loot/loot-stack.react';
 
 export default class StackRpgFrame extends React.Component {
   componentWillMount() {
-    TimerActions.start();
+    Clock.start();
     MonsterBagActions.addMonster("Grumble");
     MonsterBagActions.addMonster("Scrammo");
   }

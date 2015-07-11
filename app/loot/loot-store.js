@@ -2,6 +2,7 @@
 
 import AppDispatcher from '../dispatcher';
 import BattleStackStore from '../battles/battle-stack-store'
+import TimerConstants from '../timer/timer-constants'
 import LootItem from './loot-item'
 import LootConstants from './loot-constants'
 import Dice from './dice'
@@ -12,20 +13,13 @@ let state = {
 };
 
 class LootStore extends FluxStore {
-	constructor()	{
-		super();
-		BattleStackStore.addChangeListener(this._addLootIfMosterKilled.bind(this));
-	}
-
 	_removeLoot(loot) {
 		state.stack.splice(state.stack.indexOf(loot), 1);
-		super.emitChange();
 	}
 
-	_addLootIfMosterKilled() {
-		if(BattleStackStore.getState().monsterKilledOnLastTick) {
+	_addLootIfMonsterKilled(monsterKilledOnLastTick) {
+		if(monsterKilledOnLastTick) {
 			state.stack.push(new LootItem(Dice.rollD20()));
-			super.emitChange();
 		}
 	}
 
@@ -37,6 +31,14 @@ class LootStore extends FluxStore {
 let _LootStore = new LootStore();
 export default _LootStore;
 
-AppDispatcher
-	.when(LootConstants.LOOT_SELECTED)
-		.then((action) => _LootStore._removeLoot(action.loot));
+_LootStore.storeId = AppDispatcher.register((payload) => {
+		if(payload.action.type === LootConstants.LOOT_SELECTED) {
+			_LootStore._removeLoot(payload.action.loot);
+			_LootStore.emitChange();
+		}
+		if(payload.action.type === TimerConstants.TIMER_TICK) {
+			AppDispatcher.waitFor([BattleStackStore.storeId]);
+			_LootStore._addLootIfMonsterKilled(BattleStackStore.getState().monsterKilledOnLastTick);
+			_LootStore.emitChange();
+		}
+});

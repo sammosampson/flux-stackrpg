@@ -12,7 +12,6 @@ let state = {
 class MonsterBagStore extends FluxStore {
 	_add(monsterName) {
 		state.monsters.push(new Monster(monsterName));
-		super.emitChange();
 	}
 
 	getState() {
@@ -23,6 +22,9 @@ class MonsterBagStore extends FluxStore {
 let _MonsterBagStore = new MonsterBagStore();
 export default _MonsterBagStore;
 
-AppDispatcher
-	.when(MonsterBagConstants.ADD_MONSTER)
-		.then((action) => _MonsterBagStore._add(action.monsterName));
+_MonsterBagStore.storeId = AppDispatcher.register((payload) => {
+		if(payload.action.type === MonsterBagConstants.ADD_MONSTER) {
+			_MonsterBagStore._add(payload.action.monsterName);
+			_MonsterBagStore.emitChange();
+		}
+});
