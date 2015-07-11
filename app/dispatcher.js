@@ -14,25 +14,6 @@ class AppDispatcher extends Dispatcher.Dispatcher {
             action: action
         });
     }
-
-    when(type) {
-      return new AppDispatcherWhen(this, type);
-    }
-}
-
-class AppDispatcherWhen {
-  constructor(dispatcher, type)	{
-    this.dispatcher = dispatcher;
-    this.actionType = type;
-  }
-
-  then(callback) {
-    this.dispatcher.register((payload) => {
-        if(payload.action.type === this.actionType) {
-          callback(payload.action);
-        }
-    });
-  }
 }
 
 let _AppDispatcher = new AppDispatcher();
