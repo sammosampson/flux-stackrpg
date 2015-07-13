@@ -8,9 +8,6 @@ export default class MonsterBag extends React.Component {
     super(props);
     this.state = { monsters : MonsterBagStore.monsters };
     this.changeCallback = this._onChange.bind(this);
-  }
-
-  componentWillMount() {
     MonsterBagStore.addChangeListener(this.changeCallback);
   }
 

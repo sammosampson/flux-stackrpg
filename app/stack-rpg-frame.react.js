@@ -8,7 +8,8 @@ import BattleStack from './battles/battle-stack.react';
 import LootStack from './loot/loot-stack.react';
 
 export default class StackRpgFrame extends React.Component {
-  componentWillMount() {
+  constructor()	{
+    super();
     Clock.start();
     MonsterBagActions.addMonster("Grumble");
     MonsterBagActions.addMonster("Scrammo");

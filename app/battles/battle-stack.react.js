@@ -8,9 +8,6 @@ export default class BattleStack extends React.Component {
     super(props);
     this.state = { stack: BattleStackStore.stack };
     this.changeCallback = this._onChange.bind(this);
-  }
-
-  componentWillMount() {
     BattleStackStore.addChangeListener(this.changeCallback);
   }
 

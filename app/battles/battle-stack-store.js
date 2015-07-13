@@ -5,11 +5,9 @@ import TimerConstants from '../timer/timer-constants'
 import Monster from './monster'
 
 let stack = [];
-let monsterKilledOnLastTick = false;
 
 class BattleStackStore extends FluxStore {
 	_killMonster() {
-    monsterKilledOnLastTick = (stack.length > 0);
 		stack.pop();
   }
 
@@ -19,10 +17,6 @@ class BattleStackStore extends FluxStore {
 
 	get stack() {
 		return stack;
-	}
-
-	get monsterKilledOnLastTick() {
-		return monsterKilledOnLastTick;
 	}
 }
 

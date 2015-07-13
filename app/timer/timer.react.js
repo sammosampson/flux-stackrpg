@@ -7,9 +7,6 @@ export default class Timer extends React.Component {
 		super(props);
 		this.state = { currentTime : TimerStore.currentTime };
 		this.changeCallback = this._onChange.bind(this);
-	}
-
-	componentWillMount() {
 		TimerStore.addChangeListener(this.changeCallback);
 	}
 

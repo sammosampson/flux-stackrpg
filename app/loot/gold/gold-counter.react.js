@@ -6,9 +6,6 @@ export default class GoldCounter extends React.Component {
     super(props);
     this.state = { goldCount: GoldStore.goldCount };
     this.changeCallback = this._onChange.bind(this);
-  }
-
-  componentWillMount() {
     GoldStore.addChangeListener(this.changeCallback);
   }
 

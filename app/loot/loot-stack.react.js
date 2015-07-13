@@ -8,9 +8,6 @@ export default class LootStack extends React.Component {
     super(props);
     this.state = { stack: LootStore.stack };
     this.changeCallback = this._onChange.bind(this);
-  }
-
-  componentWillMount() {
     LootStore.addChangeListener(this.changeCallback);
   }
 
