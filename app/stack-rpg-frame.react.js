@@ -4,6 +4,8 @@ import Clock from './timer/clock';
 import GoldCounter from './loot/gold/gold-counter.react';
 import MonsterBag from './monsters/monster-bag.react';
 import MonsterBagActions from './monsters/monster-bag-actions';
+import InventoryActions from './inventory/inventory-actions';
+import Inventory from './inventory/inventory.react';
 import BattleStack from './battles/battle-stack.react';
 import LootStack from './loot/loot-stack.react';
 
@@ -13,6 +15,7 @@ export default class StackRpgFrame extends React.Component {
     Clock.start();
     MonsterBagActions.addMonster("Grumble");
     MonsterBagActions.addMonster("Scrammo");
+    InventoryActions.addItem(2);
   }
 
   render() {
@@ -23,6 +26,7 @@ export default class StackRpgFrame extends React.Component {
         <MonsterBag />
         <BattleStack />
         <LootStack />
+        <Inventory />
       </div>
     );
   }
