@@ -2,7 +2,7 @@ import FluxStore from '../flux-store'
 import AppDispatcher from '../dispatcher'
 import MonsterBagConstants from '../monsters/monster-bag-constants'
 import TimerConstants from '../timer/timer-constants'
-import Monster from './monster'
+import Monster from '../monsters/monster'
 
 let stack = [];
 

@@ -45,6 +45,21 @@ body {
     cursor: pointer;
 }
 
+.inventoryItem{
+    padding: 10px;
+    margin-top: 1px;
+    margin-left: 1px;
+    background-color: hotpink;
+    color:whitesmoke;
+    font-weight: 600;
+    float: left;
+}
+
+.inventoryItem:hover{
+    background-color: pink;
+    cursor: pointer;
+}
+
 .noselect {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
