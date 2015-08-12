@@ -3,7 +3,7 @@ import React from 'react';
 export default class StackContainer extends React.Component {
   render() {
     return (
-      <div>
+      <div className="container">
         <hr />
         <div>
             <label>{this.props.title}</label>

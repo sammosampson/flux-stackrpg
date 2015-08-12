@@ -72,3 +72,8 @@ body {
 .clearfix{
     clear:both;
 }
+
+.container{
+    clear:both;
+    min-height: 100px;
+}
