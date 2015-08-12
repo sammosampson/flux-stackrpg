@@ -1,30 +1,12 @@
 import React from 'react';
-import TimerActions from './timer-actions';
-import TimerStore from './timer-store';
+import View from '../view';
 
-export default class Timer extends React.Component {
-  constructor(props) {
-		super(props);
-		this.state = { currentTime : TimerStore.currentTime };
-		this.changeCallback = this._onChange.bind(this);
-		TimerStore.addChangeListener(this.changeCallback);
-	}
-
-	componentWillUnmount() {
-		TimerStore.removeChangeListener(this.changeCallback);
-	}
-
-	_onChange() {
-    this.setState({
-      currentTime: TimerStore.currentTime
-    });
-	}
-
+export default class Timer extends View {
   render() {
     return (
       <div>
         <label>Timer:</label>
-        <div>{this.state}</div>
+        <div>{this.props.time}</div>
       </div>
     );
   }

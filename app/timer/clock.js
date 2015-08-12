@@ -1,5 +1,5 @@
-
-import TimerActions from './timer-actions'
+import tick from './timer-actions'
+import dispatchAction from '../dispatch-action';
 
 let currentTime = 0;
 
@@ -7,7 +7,7 @@ class Clock {
     start() {
       window.setTimeout(() => {
           currentTime++;
-          TimerActions.tick(currentTime);
+          dispatchAction(tick(currentTime));
           this.start();
       }, 1000);
     }

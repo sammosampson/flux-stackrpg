@@ -1,9 +1,11 @@
 import React from 'react';
-import MonsterBagActions from './monster-bag-actions';
+import View from '../view';
+import { monsterSelected } from './monster-bag-actions';
+import dispatchAction from '../dispatch-action';
 
-export default class MonsterBagItem extends React.Component {
+export default class MonsterBagItem extends View {
   _selectMonster() {
-    MonsterBagActions.monsterSelected(this.props.monsterName);
+    dispatchAction(monsterSelected(this.props.monsterName));
   }
 
   render() {

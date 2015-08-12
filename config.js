@@ -1,5 +1,6 @@
 System.config({
   "baseURL": "/",
+  "defaultJSExtensions": true,
   "transpiler": "babel",
   "babelOptions": {
     "optional": [
@@ -8,9 +9,8 @@ System.config({
     "blacklist": []
   },
   "paths": {
-    "*": "*.js",
-    "github:*": "jspm_packages/github/*.js",
-    "npm:*": "jspm_packages/npm/*.js"
+    "github:*": "jspm_packages/github/*",
+    "npm:*": "jspm_packages/npm/*"
   }
 });
 
@@ -22,7 +22,9 @@ System.config({
     "events": "npm:events@1.0.2",
     "fetch": "npm:whatwg-fetch@0.9.0",
     "flux": "npm:flux@2.0.3",
+    "immutable": "npm:immutable@3.7.4",
     "react": "npm:react@0.14.0-alpha3",
+    "shallowequal": "npm:shallowequal@0.2.1",
     "whatwg-fetch": "npm:whatwg-fetch@0.9.0",
     "github:jspm/nodelibs-buffer@0.1.0": {
       "buffer": "npm:buffer@3.3.0"
@@ -84,6 +86,11 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.1",
       "source-map": "npm:source-map@0.1.31"
     },
+    "npm:lodash.keys@3.1.2": {
+      "lodash._getnative": "npm:lodash._getnative@3.9.1",
+      "lodash.isarguments": "npm:lodash.isarguments@3.0.4",
+      "lodash.isarray": "npm:lodash.isarray@3.0.4"
+    },
     "npm:path-browserify@0.0.0": {
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
@@ -99,10 +106,11 @@ System.config({
       "inherits": "npm:inherits@2.0.1",
       "isarray": "npm:isarray@0.0.1",
       "process": "github:jspm/nodelibs-process@0.1.1",
-      "stream": "github:jspm/nodelibs-stream@0.1.0",
       "stream-browserify": "npm:stream-browserify@1.0.0",
-      "string_decoder": "npm:string_decoder@0.10.31",
-      "util": "github:jspm/nodelibs-util@0.1.0"
+      "string_decoder": "npm:string_decoder@0.10.31"
+    },
+    "npm:shallowequal@0.2.1": {
+      "lodash.keys": "npm:lodash.keys@3.1.2"
     },
     "npm:source-map@0.1.31": {
       "amdefine": "npm:amdefine@0.1.1",

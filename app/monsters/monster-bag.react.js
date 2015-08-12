@@ -1,28 +1,13 @@
 import React from 'react';
-import MonsterBagStore from './monster-bag-store';
+import View from '../view';
 import MonsterBagList from './monster-bag-list.react';
 import StackContainer from '../stack-container.react'
 
-export default class MonsterBag extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { monsters : MonsterBagStore.monsters };
-    this.changeCallback = this._onChange.bind(this);
-    MonsterBagStore.addChangeListener(this.changeCallback);
-  }
-
-  componentWillUnmount() {
-    MonsterBagStore.removeChangeListener(this.changeCallback);
-  }
-
-  _onChange() {
-    this.setState({ monsters: MonsterBagStore.monsters });
-  }
-
+export default class MonsterBag extends View {
   render() {
     return (
       <StackContainer title="Monster Bag:">
-        <MonsterBagList monsters={this.state.monsters}/>
+        <MonsterBagList monsters={this.props.monsters}/>
       </StackContainer>
     );
   }
