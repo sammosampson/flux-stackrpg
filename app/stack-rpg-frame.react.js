@@ -11,7 +11,7 @@ import BattleStack from './battles/battle-stack.react';
 import LootStack from './loot/loot-stack.react';
 import dispatchAction from './dispatch-action';
 import Dispatcher from './dispatcher';
-import { List } from 'immutable';
+import Immutable from 'immutable';
 
 export default class StackRpgFrame extends React.Component {
   constructor()	{
@@ -26,8 +26,10 @@ export default class StackRpgFrame extends React.Component {
     this.state = {
       reduction:  {
         time : 0,
-        monsters : new List(),
-        embattledMonsters : new List()
+        monsters : new Immutable.List(),
+        embattledMonsters : new Immutable.List(),
+        loot : new Immutable.List(),
+        gold : 0
       }
     };
   }
@@ -43,10 +45,10 @@ export default class StackRpgFrame extends React.Component {
     return (
       <div>
         <Timer time={this.state.reduction.time}/>
-        <GoldCounter />
+        <GoldCounter gold={this.state.reduction.gold} />
         <MonsterBag monsters={this.state.reduction.monsters} />
         <BattleStack monsters={this.state.reduction.embattledMonsters} />
-        <LootStack />
+        <LootStack loot={this.state.reduction.loot}/>
         <Inventory />
       </div>
     );
