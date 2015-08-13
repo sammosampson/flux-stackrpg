@@ -1,3 +1,3 @@
 export default {
-	TIMER_START: 'TIMER_TICK'
+	TIMER_TICK: 'TIMER_TICK'
 }

@@ -13,7 +13,9 @@
     "dependencies": {
       "fetch": "npm:whatwg-fetch@^0.9.0",
       "flux": "npm:flux@^2.0.3",
+      "immutable": "npm:immutable@^3.7.4",
       "react": "npm:react@^0.14.0-alpha3",
+      "shallowequal": "npm:shallowequal@^0.2.1",
       "whatwg-fetch": "npm:whatwg-fetch@^0.9.0"
     },
     "devDependencies": {

@@ -1,9 +1,11 @@
 import React from 'react';
-import LootActions from './loot-actions';
+import View from '../view';
+import lootSelected from './loot-actions';
+import dispatchAction from '../dispatch-action';
 
-export default class LootStackItem extends React.Component {
+export default class LootStackItem extends View {
   _selectLoot() {
-    LootActions.lootSelected(this.props.loot);
+    dispatchAction(lootSelected(this.props.loot));
   }
 
   render() {

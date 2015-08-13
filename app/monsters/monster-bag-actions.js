@@ -1,18 +1,16 @@
 import AppDispatcher from '../dispatcher';
 import MonsterBagConstants from './monster-bag-constants';
 
-export default {
-    addMonster: (name) => {
-        AppDispatcher.handleViewAction({
-            type: MonsterBagConstants.ADD_MONSTER,
-            monsterName: name
-        });
-    },
+export function addMonster (name) {
+  return {
+    type: MonsterBagConstants.ADD_MONSTER,
+    payload: name
+  };
+}
 
-    monsterSelected: (name) => {
-        AppDispatcher.handleViewAction({
-            type: MonsterBagConstants.MONSTER_SELECTED,
-            monsterName: name
-        });
-    }
+export function monsterSelected (name) {
+  return {
+    type: MonsterBagConstants.MONSTER_SELECTED,
+    payload: name
+  };
 }

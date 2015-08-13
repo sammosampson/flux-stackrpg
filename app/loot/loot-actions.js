@@ -1,11 +1,9 @@
 import AppDispatcher from '../dispatcher';
 import LootConstants from './loot-constants';
 
-export default {
-    lootSelected: (loot) => {
-        AppDispatcher.handleViewAction({
-            type: LootConstants.LOOT_SELECTED,
-            loot: loot
-        });
-    }
+export default function lootSelected (loot) {
+  return {
+      type: LootConstants.LOOT_SELECTED,
+      payload: loot
+  };
 }
